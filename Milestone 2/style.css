@@ -217,6 +217,9 @@ textarea:focus, input:focus{
 }
 .msg p {
     align-self: flex-end;
+    color: gray;
+    font-size: 13px;
+    margin-top: 3px;
 }
 /* Input Chat */
 .chat {
