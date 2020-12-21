@@ -133,7 +133,7 @@ textarea:focus, input:focus{
     margin-left: 10px;
     align-self: center;
 }
-.nome-ultimo-Msg-profilo {
+.nome-ultimo-msg-profilo {
     margin-left: 10px;
     display: flex;
     flex-direction: column;
@@ -141,7 +141,7 @@ textarea:focus, input:focus{
     margin-top: 20px;
     width: 100%;
 }
-.nome-ultimo-Msg-profilo p {
+.nome-ultimo-msg-profilo p {
     font-size: 13px;
     font-weight: bold;
     color: lightgray;
@@ -210,6 +210,7 @@ textarea:focus, input:focus{
     margin-bottom: 10px;
     border-radius: 7px;
     padding: 10px;
+    word-wrap: break-word;
 }
 .received {
     background-color: white;

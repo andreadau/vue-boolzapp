@@ -47,12 +47,12 @@
                             <div class="profili" >
                                 <div class="profilo" @click="isVisible(index)" v-for="(contatti,index) in contact">
                                     <img :src="'img/avatar' + contatti.avatar + '.jpg'" /> 
-                                    <div class="nome-ultimo-Msg-profilo">
+                                    <div class="nome-ultimo-msg-profilo">
                                         <h3>{{contatti.name}}</h3>
                                         <span class="tempo-profilo">
                                         {{contatti.messages[(contatti.messages).length - 1].date}}
                                         </span>
-                                        <p class="ultimo-Msg"> {{contatti.messages[(contatti.messages).length - 1].text}} </p>
+                                        <p class="ultimo-msg"> {{contatti.messages[(contatti.messages).length - 1].text}} </p>
                                     </div>
                                 </div>
                             </div>
@@ -66,24 +66,24 @@
                                 <img :src="'img/avatar' + contatti.avatar + '.jpg'" /> 
                                 <div class="p-chat-text">
                                     <h3>{{contatti.name}}</h3>
-                                    <p>Ultimo accesso {{timestamp}}</p>
+                                    <p>Ultimo accesso {{contatti.messages[(contatti.messages).length - 1].date}}</p>
                                 </div>
                                 <i class="fas fa-search"></i>
                                 <i class="fas fa-paperclip"></i>
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>
                             <div class="chat-resume">
-                                <div class="container-chat"  v-for="(message,position) in contatti.messages">
+                                <div class="container-chat"  v-for="(message,index) in contatti.messages">
                                     <div class="msg"  :class="message.status === 'sended' ? 'sended' : 'received'">
-                                        <h3>{{contatti.messages[position].text}}</h3>
-                                        <p>{{contatti.messages[position].date}}</p>
+                                        <h3>{{contatti.messages[index].text}}</h3>
+                                        <p>{{contatti.messages[index].date}}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="chat">
                                 <i class="far fa-smile fa-2x"></i>
                                 <div class="chat-input-container">
-                                    <input type="text">
+                                    <input type="text" v-on:keydown.enter="addMessage()" v-model="invioMessaggio" placeholder="Scrivi un messaggio">
                                 </div>
                                 <i class="fas fa-microphone fa-2x"></i>
                             </div>

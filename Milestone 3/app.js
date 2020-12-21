@@ -86,6 +86,7 @@ let vm = new Vue({
                 ]
             },
         ],
+        invioMessaggio: "",
         timestamp: ""
     },
     created() {
@@ -101,10 +102,30 @@ let vm = new Vue({
             this.contact[index].visible = true;
         },
         whatTime(){
-            const date = new Date().toLocaleDateString();
-            const time = new Date().toLocaleTimeString();
-            const dateTime = date +' '+ time;
-            this.timestamp = dateTime;
+            const time = new Date().toLocaleString();
+            this.timestamp = time;
+        },
+        addMessage(){
+            this.whatTime()
+            this.contact.forEach(element=> {
+                if (element.visible === true) {
+                    element.messages.push({
+                        date: this.timestamp,
+                        text: this.invioMessaggio,
+                        status: "sended"
+                    });
+                    setTimeout(function(){
+                        this.whatTime()
+                        element.messages.push({
+                            date: this.timestamp,
+                            text: "ok!",
+                            status: "received",
+                        });
+                    }.bind(this),1000);
+                };
+                });
+            this.invioMessaggio = "";
         },
     }
+
 });
