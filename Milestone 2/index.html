@@ -4,9 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <title>Boolzap Milestone 2</title>
 </head>
 <body>
+    <main>
+        <section id="app">
+            <div id="sfondo">
+                <!-- sfondo container -->
+                <div class="green-back">
+                </div>
+                <div class="grey-back">
+                </div>
+                <!-- /sfondo container -->
+                <!-- Main Container -->
+                <div class="large-container">
+                    <div class="container">
+                        <!-- Parte Sinistra -->
+                        <div class="container-left">
+                            <div class="utente">
+                                <img src="img/avatar_1.jpg" alt="">
+                                <h3>Nome Utente</h3>
+                                <i class="fas fa-circle-notch"></i>
+                                <i class="fas fa-comment-alt"></i>
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                            <div class="alert-notifiche">
+                                <i class="fas fa-bell-slash fa-2x"></i>
+                                <div class="text-notifiche">
+                                    <h4>Ricevi notifiche di nuovi messaggi</h4>
+                                    <p>Attiva notifiche desktop</p>
+                                </div>
+                            </div>
+                            <div class="search">
+                                <div class="search-bar">
+                                    <i class="fas fa-search"></i>
+                                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                                </div>
+                            </div>
+                            <div class="profili" >
+                                <div class="profilo" @click="isVisible(index)" v-for="(contatti,index) in contact">
+                                    <img :src="'img/avatar' + contatti.avatar + '.jpg'" /> 
+                                    <div class="nome-ultimo-Msg-profilo">
+                                        <h3>{{contatti.name}}</h3>
+                                        <span class="tempo-profilo">
+                                        {{contatti.messages[(contatti.messages).length - 1].date}}
+                                        </span>
+                                        <p class="ultimo-Msg"> {{contatti.messages[(contatti.messages).length - 1].text}} </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <!-- /Parte Sinistra -->
     
+                        <!-- Parte Destra -->
+                        <div class="container-right" v-for="(contatti,index) in contact" v-if="contatti.visible">
+                            <div class="profilo-chat" >
+                                <img :src="'img/avatar' + contatti.avatar + '.jpg'" /> 
+                                <div class="p-chat-text">
+                                    <h3>{{contatti.name}}</h3>
+                                    <p>Ultimo accesso {{timestamp}}</p>
+                                </div>
+                                <i class="fas fa-search"></i>
+                                <i class="fas fa-paperclip"></i>
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                            <div class="chat-resume">
+                                <div class="container-chat"  v-for="(message,position) in contatti.messages">
+                                    <div class="msg"  :class="message.status === 'sended' ? 'sended' : 'received'">
+                                        <h3>{{contatti.messages[position].text}}</h3>
+                                        <p>{{contatti.messages[position].date}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat">
+                                <i class="far fa-smile fa-2x"></i>
+                                <div class="chat-input-container">
+                                    <input type="text">
+                                </div>
+                                <i class="fas fa-microphone fa-2x"></i>
+                            </div>
+                        </div>
+                        <!-- /Parte Destra -->
+                    </div>
+                </div>
+                <!-- Main Container -->
+            </div>
+        </section>
+    </main>
+    <!-- VueJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- Js -->
+    <script src="app.js"></script>
 </body>
 </html>
