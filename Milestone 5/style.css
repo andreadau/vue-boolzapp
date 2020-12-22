@@ -211,10 +211,34 @@ textarea:focus, input:focus{
     border-radius: 7px;
     padding: 10px;
     word-wrap: break-word;
+    position: relative;
 }
 .received {
     background-color: white;
     align-self: flex-start;
+}
+.bg-green {
+    background-color: #D5F9BA;
+}
+.bg-white {
+    background-color: white;
+}
+.icon-lay {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 0;
+    border-radius: 4px;
+    margin-right: 5px;
+    display: none;
+}
+.msg:hover .icon-lay{
+    display: block;
+}
+.msg i {
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 .msg p {
     align-self: flex-end;

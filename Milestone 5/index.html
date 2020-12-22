@@ -76,6 +76,9 @@
                                 <div class="container-chat"  v-for="(message,index) in contatti.messages">
                                     <div class="msg"  :class="message.status === 'sended' ? 'sended' : 'received'">
                                         <h3>{{contatti.messages[index].text}}</h3>
+                                        <div class="icon-lay" :class="message.status === 'sended' ? 'bg-green' : 'bg-white'">
+                                            <i class="fas fa-chevron-down"></i> 
+                                        </div>
                                         <p>{{contatti.messages[index].date}}</p>
                                     </div>
                                 </div>
