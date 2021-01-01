@@ -73,13 +73,17 @@
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>
                             <div class="chat-resume">
-                                <div class="container-chat"  v-for="(message,index) in contatti.messages">
+                                <div class="container-chat"  v-for="(message,i) in contatti.messages">
                                     <div class="msg"  :class="message.status === 'sended' ? 'sended' : 'received'">
-                                        <h3>{{contatti.messages[index].text}}</h3>
+                                        <h3>{{contatti.messages[i].text}}</h3>
                                         <div class="icon-lay" :class="message.status === 'sended' ? 'bg-green' : 'bg-white'">
-                                            <i class="fas fa-chevron-down"></i> 
+                                            <i class="fas fa-chevron-down" @click="showDropdown(index,i)"></i> 
                                         </div>
-                                        <p>{{contatti.messages[index].date}}</p>
+                                        <div class="tendina-msg" v-if="message.dropdown === true">
+                                            <p>Info messaggio</p>
+                                            <p @click="deleteMessage(index,i)">Cancella messaggio</p>
+                                        </div>
+                                        <p>{{contatti.messages[i].date}}</p>
                                     </div>
                                 </div>
                             </div>
